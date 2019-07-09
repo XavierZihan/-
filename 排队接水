@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+	int n;
+	int T[1001];
+	int tong[1001]={0};
+	int T2[1001];
+	cin>>n;
+	for(int i=0;i<n;i++)
+	{
+		cin>>T[i];
+		T2[i]=T[i];
+	}
+	for(int i=0;i<n;i++)
+	{
+		tong[T[i]]++;
+	}
+	sort(T,T+n+1);
+	double sum=0;
+	int tim=n-1;
+	for(int i=0;i<n;i++)
+	{
+		sum=sum+T[i+1]*tim;
+		tim--;
+	}
+	double ave=sum/n;
+	for(int i=0;i<=1001;i++)
+	{
+		if(tong[i]!=0)
+		{
+			for(int j=0;j<n;j++)
+			{
+				if(i==T2[j])
+				cout<<j+1<<" ";
+			}
+		}
+	}
+	cout<<endl;
+	printf("%.2f ",ave);
+	return 0;
+}
