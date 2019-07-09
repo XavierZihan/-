@@ -1,0 +1,34 @@
+#include<iostream>
+using namespace std;
+int a[100000],n,m,sum,tm;
+bool pd(int x,int b[])
+{
+	for(int i=0;i<n;i++)
+	{
+		if(sum+b[i]<=x)
+		sum=sum+b[i];
+		else sum=b[i],tm++;
+	}
+	return tm>=m;
+}
+int main()
+{
+	int mid,r=0,l=0;
+	cin>>n>>m;
+	for(int i=0;i<n;i++)
+	{
+		cin>>a[i];
+		r+=a[i];
+		if(l<a[i])l=a[i];
+	}
+	while(l<=r)
+	{
+		mid=(l+r)/2;
+		sum=0,tm=0;
+		if(pd(mid,a))
+		l=mid+1;
+		else r=mid-1;
+	}
+	cout<<l<<endl;
+	return 0;
+}
